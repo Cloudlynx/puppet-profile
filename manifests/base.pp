@@ -2,6 +2,7 @@ class profile::base (
   $sshd_options = {},
   $sshd_subsystems = {},
   $certificates = {},
+  $vhosts = {}
 ) {
   include certtool
 
@@ -9,4 +10,6 @@ class profile::base (
   create_resources('sshd_config_subsystem',$sshd_subsystems)
 
   create_resources('certtool::cert',$certificates)
+
+  create_resources('apache::vhost', $vhosts)
 }
